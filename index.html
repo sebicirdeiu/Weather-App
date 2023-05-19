@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-left">
+        <div class="weather-text" data-current-weather>Soare</div>
+        <div class="location" data-current-location>Brasov</div>
+        <div class="date" data-current-date>25/05/2023</div>
+        <div class="temp">
+            <span data-current-temp>20</span>&deg;
+        </div> 
+        <div class="toggle">Display: C&deg; / F&deg; </div>
+        <img class="icon" id="main" src="/src/assets/animated/day.svg" data-current-icon/>
+        <input type="search" class="search" maxlength="40" minlength="3" placeholder="Cauta Locatie">
+    </div>
+
+    <div class="header-right">
+        <div class="info-group">
+            <div class="label">Max</div>
+           <div><span data-current-high>25</span>&deg;</div>
+        </div>
+       <div class="info-group">
+            <div class="label">Min</div>
+            <div><span data-current-min>16</span>&deg;</div>
+       </div>
+        <div class="info-group">
+            <div class="label">Se resimt</div>
+            <div><span data-current-feel>23</span>&deg;</div>
+        </div>
+        <div class="info-group">
+            <div class="label">Vânt</div>
+            <div><span data-current-wind>23</span>
+                <span class="value-sub-info">kmh</span>
+            </div>
+        </div>
+        <div class="info-group">
+            <div class="label">Precipitații</div>
+            <div><span data-current-wind>0.1</span>
+                <span class="value-sub-info"></span>mm</div>
+        </div>
+
+    </div>
+</header>
+    
+</body>
+</html>
