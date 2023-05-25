@@ -12,4 +12,4 @@ import thunder from "./assets/animated/thunder.svg"
 import snowy1 from "./assets/animated/snowy-1.svg"
 import snowy2 from "./assets/animated/snowy-3.svg"
 import snowy3 from "./assets/animated/snowy-5.svg"
-
+import backgrounf from "./assets/background.jpg"

@@ -5,6 +5,13 @@
 body {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(./86dd622ac7f41e2736cc.jpg);
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -12,3 +19,150 @@ header {
     justify-content: space-between;
     margin: 5rem;
 }
+
+.header-left {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ 
+ 
+}
+
+
+.weather-text {
+    margin-bottom: 0.5rem;
+    font-size: xx-large;
+    font-weight: 600;
+}
+.location {
+    margin-bottom: 0.5rem;
+    font-size: large;
+    font-weight: 550;
+}
+
+.date {
+    margin-bottom: 0.5rem;
+    font-size: medium;
+    font-weight: 500;
+}
+
+.temp {
+    font-size: xx-large;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.toggle {
+    font-size: small;
+    font-weight: 500;
+}
+
+#main {
+    height: 100px;
+    width: auto;
+    justify-self: flex-start;
+}
+
+.search {
+border: 0px;
+border-bottom: 1px solid black;
+height: 1.6rem;;
+font-size: medium;
+border-radius: 10px;
+padding: 0.5rem;
+}
+
+.header-right {
+    font-size: x-large;
+    font-weight: 550;
+    margin-right: 0.5rem;
+
+}
+.header-right>* {
+    margin-bottom: 0.7rem;
+}
+
+.header-right > .info-group > .label {
+    font-size: large;
+    font-weight: 400;
+}
+
+.toggle {
+padding: 0.6rem;
+border-bottom: 1px solid;
+font-size: medium;
+}
+
+.toggle:hover{
+    cursor:pointer;
+    border-bottom: 1px solid rgb(11, 11, 67);
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    font-size: larger;
+}
+
+.tabs > div {
+    padding: 0.5rem;
+    border: 1px solid;
+    margin-right: 0.8rem;
+    margin-top: 3rem;
+}
+
+.tabs > div:hover {
+    background-color: rgba(9, 6, 6, 0.7);
+    cursor: pointer;
+}
+
+.day-section {
+    display: flex;
+    justify-content: space-around;
+    margin:5rem 6rem ;
+    background-color: rgba(9, 6, 6, 0.5);
+    font-size: larger;
+    flex-wrap: wrap;
+    
+}
+
+.day-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem;
+   
+}
+
+
+
+.hour-section {
+    align-self: center;
+    width: 90%;
+    margin-bottom: 3rem;
+    background-color: rgba(9, 6, 6, 0.5);
+    font-size: larger;
+}
+
+
+ .hour-row:nth-child(2n) {
+    background-color: rgba(9, 6, 6, 0.3) ;
+}
+.hour-row>td:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+td>.info-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+td {
+    padding: 0.6rem 0;
+}
+
+
