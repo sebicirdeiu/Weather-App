@@ -58,7 +58,7 @@ header {
 }
 
 #main {
-    height: 100px;
+    height: 130px;
     width: auto;
     justify-self: flex-start;
 }
@@ -79,7 +79,10 @@ padding: 0.5rem;
 
 }
 .header-right>* {
-    margin-bottom: 0.7rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid;
+    padding-bottom: 0.15rem;
+
 }
 
 .header-right > .info-group > .label {
@@ -95,7 +98,7 @@ font-size: medium;
 
 .toggle:hover{
     cursor:pointer;
-    border-bottom: 1px solid rgb(11, 11, 67);
+    border-bottom: 1px solid rgba(253, 229, 15, 0.806);
 }
 
 .tabs {
@@ -109,6 +112,7 @@ font-size: medium;
     border: 1px solid;
     margin-right: 0.8rem;
     margin-top: 3rem;
+    border-radius: 8px;
 }
 
 .tabs > div:hover {
@@ -118,11 +122,12 @@ font-size: medium;
 
 .day-section {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin:5rem 6rem ;
     background-color: rgba(9, 6, 6, 0.5);
     font-size: larger;
     flex-wrap: wrap;
+    border-radius: 10px;
     
 }
 
@@ -142,6 +147,7 @@ font-size: medium;
     margin-bottom: 3rem;
     background-color: rgba(9, 6, 6, 0.5);
     font-size: larger;
+    border-radius: 10px;
 }
 
 
@@ -165,4 +171,8 @@ td {
     padding: 0.6rem 0;
 }
 
-
+.label,.day-card-day {
+    margin-bottom: 0.3rem;
+        
+    
+}
