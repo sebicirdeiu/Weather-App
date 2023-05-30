@@ -1,25 +1,131 @@
-import search from "./assets/animated/icons8-search.svg"
-import day from "./assets/animated/day.svg"
-import cloud1 from "./assets/animated/cloudy-day-1.svg"
-import cloud2 from "./assets/animated/cloudy-day-2.svg"
-import ncloud1 from "./assets/animated/cloudy-night-1.svg"
-import ncloud2 from "./assets/animated/cloudy-night-2.svg"
-import night from "./assets/animated/night.svg" 
-import rainy1 from "./assets/animated/rainy-1.svg"
-import rainy2 from "./assets/animated/rainy-2.svg"
-import rainy3 from "./assets/animated/rainy-3.svg"
-import thunder from "./assets/animated/thunder.svg"
-import snowy1 from "./assets/animated/snowy-1.svg"
-import snowy2 from "./assets/animated/snowy-3.svg"
-import snowy3 from "./assets/animated/snowy-5.svg"
-import backgrounf from "./assets/background.jpg"
-import getWeather from "./weather.js"
 
-getWeather().then(rendercurrentWeather)
-.catch(error => {
-    console.error(error);
-  });
+import getWeather from "./weather.js"
+import {ICON_MAP} from "./iconMap"
+
+
+navigator.geolocation.getCurrentPosition(positionSuccess, positionError)
+
+function positionSuccess({ coords }) {
+  getWeather(
+    coords.latitude,
+    coords.longitude,
+    Intl.DateTimeFormat().resolvedOptions().timeZone
+  )
+    .then(renderWeather)
+    .catch(e => {
+      console.error(e)
+      alert("Eroare obtinere date meteo :(")
+    })
+}
+
+function positionError() {
+  alert(
+    "A aparut o eroare la identificarea locatiei, incearca din nou si reincarca pagina!"
+  )
+}
+
+
+
+
+  function renderWeather({current, daily, hourly}) {
+    renderCurrentWeather(current);
+    renderDailyWeather(daily);
+
+    const hourlySection = document.querySelector(".hour-section");
+    const dailySection = document.querySelector("[data-day-section]")
+
+    const dayTab = document.querySelector(".zile");
+        dayTab.addEventListener("click", () => {
+             renderDailyWeather(daily);
+             hourlySection.style.display = "none";
+             dailySection.style.display = "flex"
+
+    })
+
+    const hourTab = document.querySelector(".ore");
+        hourTab.addEventListener("click", () => {
+            renderHourlyWeather(hourly);
+            dailySection.style.display = "none"
+            hourlySection.style.display = "table"
+    })
+    
+    
+  }
+
+
+//helper function
+    function setValue(selector, value, { parent = document } = {}) {
+    parent.querySelector(`[data-${selector}]`).textContent = value
+  }
+
+
+  // transform icon code to svg img
+  function getIconUrl(iconCode){
+    return `./assets/animated/${ICON_MAP.get(iconCode)}.svg`
+}
+
 
   function renderCurrentWeather(current) {
-    document.querySelector("[data-current-temp]").textContent = current.currentTemp
+    const currentIcon = document.querySelector("#main")
+    currentIcon.src = getIconUrl(current.iconCode);
+    
+    setValue("current-temp", current.currentTemp);
+    setValue("current-high", current.highTemp);
+    setValue("current-min", current.lowTemp);
+    setValue("current-feel", current.flTemp);
+    setValue("current-wind", current.windSpeed);
+    setValue("current-precip", current.precip);
+    setValue("current-date", MAIN_day_formatter.format(current.timestamp));
+    
   }
+
+
+const DAY_FORMATTER = new Intl.DateTimeFormat(["ro-RO"], {weekday: "long" });
+const MAIN_day_formatter = new Intl.DateTimeFormat(["ro-RO"], 
+{weekday: "long",
+ day:"numeric", 
+ month: "2-digit",
+ year: "numeric" });
+
+ const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, { hour: "numeric" })
+
+
+
+function renderDailyWeather(daily) {
+    const dailySection = document.querySelector("[data-day-section]")
+    const dayCardTemplate = document.getElementById("day-card-template")
+     dailySection.innerHTML = ""
+
+daily.forEach(day => {
+    const element = dayCardTemplate.content.cloneNode(true) // cloning the format of the day template
+    setValue("temp", day.maxTemp, { parent: element })
+    setValue("date", DAY_FORMATTER.format(day.timestamp), { parent: element })
+    element.querySelector("[data-icon]").src = getIconUrl(day.iconCode)
+
+    dailySection.append(element)
+  })
+}
+
+
+function renderHourlyWeather(hourly) {
+    const hourlySection = document.querySelector("[data-hour-section]");
+    const hourRowTemplate = document.getElementById("hour-row-template");
+    hourlySection.innerHTML = "";
+    
+    
+    hourly.forEach((hour, index) => {
+        if(index <24) {
+        index++;
+        const element = hourRowTemplate.content.cloneNode(true);
+        setValue("temp", hour.temp, { parent: element });
+        setValue("fl-temp", hour.feelsLike, { parent: element });
+        setValue("wind", hour.windSpeed, { parent: element });
+        setValue("precip", hour.precip, { parent: element });
+        setValue("day", DAY_FORMATTER.format(hour.timestamp), { parent: element });
+        setValue("time", HOUR_FORMATTER.format(hour.timestamp), { parent: element });
+        element.querySelector("[data-icon]").src = getIconUrl(hour.iconCode);
+        hourlySection.append(element)
+
+        
+  }})
+}

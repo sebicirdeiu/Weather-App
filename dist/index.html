@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
 <header class="header">
     <div class="header-left">
-        <div class="weather-text" data-current-weather>Soare</div>
-        <div class="location" data-current-location>Brasov</div>
+        <div class="weather-text" data-current-weather>Vremea</div>
+        
         <div class="date" data-current-date>25/05/2023</div>
         <div class="temp">
             <span data-current-temp>20</span>&deg;
@@ -46,15 +47,15 @@
         </div>
         <div class="info-group">
             <div class="label">Precipitații</div>
-            <div><span data-current-wind>0.1</span>
+            <div><span data-current-precip>0.1</span>
                 <span class="value-sub-info"></span>mm</div>
         </div>
 
      </div>
 </header>
     <section class="tabs">
-        <div>Pe Zile</div>
-        <div>Pe Ore</div>
+        <div class="zile">Pe Zile</div>
+        <div class="ore">Pe Ore</div>
     </section>
     <section class="day-section" data-day-section>
         <div class="day-card">
@@ -382,7 +383,7 @@
 
     <template id="day-card-template">
         <div class="day-card">
-            <img data-icon class="weather-icon"/>
+            <img data-icon class="weather-icon" />
             <div class="day-card-day" data-date></div>
             <div><span data-temp></span><span>&deg;</span></div>
         </div>
