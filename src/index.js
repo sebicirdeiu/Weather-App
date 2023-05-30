@@ -15,4 +15,11 @@ import snowy3 from "./assets/animated/snowy-5.svg"
 import backgrounf from "./assets/background.jpg"
 import getWeather from "./weather.js"
 
-getWeather()
+getWeather().then(rendercurrentWeather)
+.catch(error => {
+    console.error(error);
+  });
+
+  function renderCurrentWeather(current) {
+    document.querySelector("[data-current-temp]").textContent = current.currentTemp
+  }
