@@ -44,6 +44,7 @@ header {
     margin-bottom: 0.5rem;
     font-size: medium;
     font-weight: 500;
+    margin-bottom: 1rem;
 }
 
 .temp {
@@ -52,13 +53,13 @@ header {
     margin-bottom: 0.5rem;
 }
 
-.toggle {
-    font-size: small;
+.message {
+    font-size: larger;
     font-weight: 500;
 }
 
 #main {
-    height: 130px;
+    height: 160px;
     width: auto;
     justify-self: flex-start;
 }
