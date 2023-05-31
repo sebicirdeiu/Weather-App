@@ -1,8 +1,9 @@
 
 import getWeather from "./weather.js"
 import {ICON_MAP} from "./iconMap"
+import {Message_Map} from "./messageMap"
 
-
+// activeare geolocatie pentru afisarea vremii locale
 navigator.geolocation.getCurrentPosition(positionSuccess, positionError)
 
 function positionSuccess({ coords }) {
@@ -20,12 +21,12 @@ function positionSuccess({ coords }) {
 
 function positionError() {
   alert(
-    "A aparut o eroare la identificarea locatiei, incearca din nou si reincarca pagina!"
+    "A aparut o eroare! Activeaza locatia si reincarca pagina!"
   )
 }
 
 
-
+// afisare date vreme initiale si in functie de preferinta (zile/ore)
 
   function renderWeather({current, daily, hourly}) {
     renderCurrentWeather(current);
@@ -52,7 +53,6 @@ function positionError() {
     
   }
 
-
 //helper function
     function setValue(selector, value, { parent = document } = {}) {
     parent.querySelector(`[data-${selector}]`).textContent = value
@@ -64,11 +64,17 @@ function positionError() {
     return `./assets/animated/${ICON_MAP.get(iconCode)}.svg`
 }
 
+    function getMessage(iconCode){
+        return Message_Map.get(iconCode)
+    }
+
 
   function renderCurrentWeather(current) {
     const currentIcon = document.querySelector("#main")
     currentIcon.src = getIconUrl(current.iconCode);
-    
+    const message = document.querySelector(".message");
+    message.textContent = getMessage(current.iconCode);
+
     setValue("current-temp", current.currentTemp);
     setValue("current-high", current.highTemp);
     setValue("current-min", current.lowTemp);

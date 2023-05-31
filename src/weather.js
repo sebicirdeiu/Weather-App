@@ -22,6 +22,38 @@ export default async function getWeather() {
   }
 }
     
+async function getUsWeather() {
+    
+    try {
+    const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,apparent_temperature,precipitation,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=auto")
+    let info = await response.json()
+    
+    
+    const currentWeatherUs = parseCurrentWeather(info);
+    const dailyWeatherUs = parseDailyWeather(info);
+    const hourlyWeatherUs = parseHourlyWeather(info);
+
+    return {
+      currentUs: currentWeather,
+      dailyUs: dailyWeather,
+     hourlyUs: hourlyWeather,
+    };
+  } catch (error) {
+    
+    console.error(error);
+  
+  }
+
+}
+
+
+
+export function convertToUs () {
+   let km = document.querySelector(".km").textContent = "mph";
+   let mm = document.querySelector(".mm").textContent = "inch";
+}
+
+
 
   
 //destructuring to get data for real time weather
