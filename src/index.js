@@ -3,27 +3,11 @@ import getWeather from "./weather.js"
 import {ICON_MAP} from "./iconMap"
 import {Message_Map} from "./messageMap"
 
-// activeare geolocatie pentru afisarea vremii locale
-navigator.geolocation.getCurrentPosition(positionSuccess, positionError)
-
-function positionSuccess({ coords }) {
-  getWeather(
-    coords.latitude,
-    coords.longitude,
-    Intl.DateTimeFormat().resolvedOptions().timeZone
-  )
-    .then(renderWeather)
-    .catch(e => {
-      console.error(e)
-      alert("Eroare obtinere date meteo :(")
-    })
-}
-
-function positionError() {
-  alert(
-    "A aparut o eroare! Activeaza locatia si reincarca pagina!"
-  )
-}
+getWeather()
+.then(renderWeather)
+.catch(e => {
+  console.error(e)
+})
 
 
 // afisare date vreme initiale si in functie de preferinta (zile/ore)

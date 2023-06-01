@@ -11,7 +11,7 @@ addMapping([55, 56, 57], "rainy-2")
 addMapping([61, 63,], "rainy-3")
 addMapping([65], "rainy-4")
 addMapping([66, 67], "rainy-6")
-addMapping([71, 73, 75, 77, 85, 86], "snowy-3")
+addMapping([71, 73, 75, 77, 80, 85, 86], "snowy-3")
 addMapping([95, 96, 99], "thunder")
 
 function addMapping(values, icon) {

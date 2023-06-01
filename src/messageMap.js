@@ -9,7 +9,7 @@ addMapping([55, 56, 57], "Ia și umbrela cu tine...")
 addMapping([61, 63,], "Nu uita umbrela!")
 addMapping([65], "Ploaie abundentă, ia un taxi!")
 addMapping([66, 67], "Furtună, nu ieși din casă!")
-addMapping([71, 73, 75, 77, 85, 86], "Hai afară la zăpadă! :)")
+addMapping([71, 73, 75, 77,80, 85, 86], "Hai afară la zăpadă! :)")
 addMapping([95, 96, 99], "Tunete, fulgere și povești de groază...")
 
 function addMapping(values, message) {
