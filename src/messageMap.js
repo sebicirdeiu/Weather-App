@@ -1,7 +1,7 @@
 export  const Message_Map = new Map() 
 
 addMapping([0, 1], "Perfect de o limonadă în centru!")
-addMapping([2], "Mult soare, câte un nor rătăcit...")
+addMapping([2], "Mult soare, câte un nor rătăcit pe alocuri...")
 addMapping([3], "Soare cu nori, măcar nu plouă :)")
 addMapping([45, 48], "Înnorat că la englezi...")
 addMapping([51, 53], "Câțiva stropi de ploaie,  nu e bai :)")
